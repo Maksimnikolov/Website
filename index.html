@@ -11,6 +11,7 @@
   <h1>Maksim</h1>
   <div>
     <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
   </div>
 </nav>
 
@@ -20,22 +21,22 @@
 </section>
 
 <section id="projects">
-  <h2>Projects</h2>
+  <h2>Interactive Projects</h2>
 
   <div class="grid">
-    <a class="card" href="/snake/">
-      <h3>Snake Game</h3>
-      <p>Classic arcade</p>
+    <a href="/snake/" class="card">
+      <h3>Snake</h3>
+      <p>Smooth modern arcade</p>
     </a>
 
-    <a class="card" href="/volume/">
-      <h3>Annoying Volume</h3>
-      <p>Good luck controlling it</p>
+    <a href="/reaction/" class="card">
+      <h3>Reaction</h3>
+      <p>Test your reflexes</p>
     </a>
 
-    <a class="card" href="/reaction/">
-      <h3>Reaction Test</h3>
-      <p>Test your speed</p>
+    <a href="/volume/" class="card">
+      <h3>Volume Chaos</h3>
+      <p>Minimal but evil</p>
     </a>
   </div>
 </section>
@@ -48,156 +49,6 @@
     <a href="https://instagram.com/maxnikolov77" target="_blank">Instagram</a>
   </div>
 </section>
-
-</body>
-</html>
-    <div class="card" onclick="openGame('reaction')">
-      <h3>Reaction Test</h3>
-      <p>How fast are you?</p>
-    </div>
-  </div>
-</section>
-
-<section id="about">
-  <h2>About</h2>
-  <p>I build interactive projects with Python, AI, and web tech.</p>
-</section>
-
-<section id="contact">
-  <h2>Connect</h2>
-  <div class="socials">
-    <a href="https://github.com/Maksimnikolov" target="_blank">GitHub</a>
-    <a href="https://www.tiktok.com/@max.nikolov" target="_blank">TikTok</a>
-    <a href="https://instagram.com/maxnikolov77" target="_blank">Instagram</a>
-  </div>
-</section>
-
-<!-- GAME MODAL -->
-<div id="modal" class="modal hidden">
-  <button onclick="closeGame()">Close</button>
-  <div id="gameContainer"></div>
-</div>
-
-<script>
-/* typing */
-const text = "Maksim Nikolov";
-let i = 0;
-(function type(){
-  if(i < text.length){
-    document.getElementById("typing").innerHTML += text[i++];
-    setTimeout(type, 70);
-  }
-})();
-
-/* modal */
-function openGame(game){
-  const modal = document.getElementById("modal");
-  const container = document.getElementById("gameContainer");
-  modal.classList.remove("hidden");
-  container.innerHTML = "";
-
-  if(game === "snake") loadSnake(container);
-  if(game === "volume") loadVolume(container);
-  if(game === "reaction") loadReaction(container);
-}
-
-function closeGame(){
-  document.getElementById("modal").classList.add("hidden");
-}
-
-/* SNAKE GAME */
-function loadSnake(container){
-  const canvas = document.createElement("canvas");
-  canvas.width = 400;
-  canvas.height = 400;
-  container.appendChild(canvas);
-
-  const ctx = canvas.getContext("2d");
-  let snake = [{x:200,y:200}];
-  let food = {x:100,y:100};
-  let dx = 20, dy = 0;
-
-  document.onkeydown = e=>{
-    if(e.key==="ArrowUp"){dx=0;dy=-20;}
-    if(e.key==="ArrowDown"){dx=0;dy=20;}
-    if(e.key==="ArrowLeft"){dx=-20;dy=0;}
-    if(e.key==="ArrowRight"){dx=20;dy=0;}
-  };
-
-  function loop(){
-    const head = {x: snake[0].x + dx, y: snake[0].y + dy};
-    snake.unshift(head);
-
-    if(head.x===food.x && head.y===food.y){
-      food = {
-        x: Math.floor(Math.random()*20)*20,
-        y: Math.floor(Math.random()*20)*20
-      };
-    } else snake.pop();
-
-    ctx.fillStyle="#000";
-    ctx.fillRect(0,0,400,400);
-
-    ctx.fillStyle="lime";
-    snake.forEach(s=>ctx.fillRect(s.x,s.y,18,18));
-
-    ctx.fillStyle="red";
-    ctx.fillRect(food.x, food.y, 18,18);
-
-    setTimeout(loop,100);
-  }
-  loop();
-}
-
-/* ANNOYING VOLUME */
-function loadVolume(container){
-  const btn = document.createElement("button");
-  btn.innerText = "Increase Volume";
-  const bar = document.createElement("div");
-  bar.style.height="20px";
-  bar.style.background="gray";
-  bar.style.width="100px";
-
-  container.appendChild(btn);
-  container.appendChild(bar);
-
-  btn.onclick = ()=>{
-    const random = Math.random();
-    bar.style.width = (Math.random()*300)+"px";
-
-    const audio = new Audio();
-    audio.src = "https://www.soundjay.com/button/beep-07.wav";
-    audio.play();
-
-    if(random > 0.7){
-      alert("NOPE 😈");
-    }
-  };
-}
-
-/* REACTION GAME */
-function loadReaction(container){
-  const box = document.createElement("div");
-  box.style.height="200px";
-  box.style.background="red";
-  container.appendChild(box);
-
-  let start;
-
-  setTimeout(()=>{
-    box.style.background="green";
-    start = Date.now();
-  }, Math.random()*3000+1000);
-
-  box.onclick = ()=>{
-    if(box.style.background==="green"){
-      alert("Time: "+(Date.now()-start)+"ms");
-    } else {
-      alert("Too early!");
-    }
-  };
-}
-</script>
 
 </body>
 </html>
