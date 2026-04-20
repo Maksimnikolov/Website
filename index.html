@@ -1,102 +1,94 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <link rel="stylesheet" href="style.css">
-        <style>
-            body {
-                margin: 0;
-                padding: 0;
-                font-family: sans-serif;
-                background: #fafafa;
-            }
-            .favorite-cars-section {
-                margin: 40px 200px;
-                padding: 24px;
-                background: #fff;
-                border-radius: 12px;
-                box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-            }
-            .favorite-cars-title {
-                font-size: 1.5em;
-                margin-bottom: 20px;
-            }
-            .favorite-cars-list {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 30px;
-                justify-content: center;
-                align-items: center;     
-            }
-            .favorite-cars-list img {
-                width: 120px;
-                height: auto;
-                opacity: 0.9;
-                border-radius: 8px;
-                box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-                transition: transform 0.25s cubic-bezier(0.4,0.2,0.2,1), box-shadow 0.25s;
-            }
-            .favorite-cars-list img:hover {
-                transform: scale(1.5);
-                box-shadow: 0 4px 16px rgba(0,0,0,0.15);
-                z-index: 1;
-            }
-        </style>
-        <script>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maksim | Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { overflow-x: hidden; }
+    .fade-in { opacity: 0; transform: translateY(20px); transition: all 0.8s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .glow:hover { box-shadow: 0 0 25px rgba(0,255,255,0.6); transform: scale(1.05); }
+    .gradient-text {
+      background: linear-gradient(90deg, #00f5ff, #9b5cff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  </style>
+</head>
+<body class="bg-black text-white font-sans">
 
-        </script>
-        </head>
-        <body>
-        <h1>Max Nikolov</h1>
-        <p>This is my personal website</p>
-        <section class="favorite-cars-section">
-            <div class="favorite-cars-title">Max's Favorite Cars</div>
-            <div class="favorite-cars-list">
-            <div class="car-item">
-                <img src="https://shorturl.at/dlzkh" alt="BMW M4 CSL" />
-                <div class="car-info">2025 BMW M4 CS: 543 hp twin-turbo I6, AWD, lightweight carbon build, 188 mph.</div>
-            </div>
-            <div class="car-item">
-                <img src="https://shorturl.at/XU4hB" alt="Porsche 918 spyder" />
-                <div class="car-info">Porsche 918 Spyder: 887 hp hybrid V8 + e-motors, AWD, 211 mph.</div>
-            </div>
-            <div class="car-item">
-                <img src="https://shorturl.at/3auC2" alt="M3 Cs" />
-                <div class="car-info">BMW M3 CS: 543 hp, 479 lb-ft, 0–60 mph in 3.2s, 188 mph top speed.</div>
-            </div>
-            <div class="car-item">
-                <img src="https://shorturl.at/nhmEA" alt="McLaren 720S" />
-                <div class="car-info">McLaren 720S: 710hp, V8, 0-60 in 2.7s</div>
-            </div>
-            <div class="car-item">
-                <img src="https://shorturl.at/6Y5y1" alt="BMW e46 M3" />
-                <div class="car-info">BMW E46 M3: 3.2L I6, 333 hp, RWD, sharp handling, flared fenders.</div>
-            </div>
-            </div>
-        </section>
-        <style>
-            .car-item {
-            position: relative;
-            display: inline-block;
-            }
-            .car-info {
-            display: none;
-            position: absolute;
-            left: 50%;
-            top: 100%;
-            transform: translateX(-50%);
-            background: rgba(0,0,0,0.85);
-            color: #fff;
-            padding: 8px 16px;
-            border-radius: 6px;
-            font-size: 0.95em;
-            white-space: nowrap;
-            margin-top: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.18);
-            z-index: 2;
-            }
-            .car-item:hover .car-info {
-            display: block;
-            }
-        </style>
-        </body>
-    </html>
+  <!-- Hero -->
+  <section class="h-screen flex flex-col justify-center items-center text-center">
+    <h1 class="text-6xl font-bold gradient-text">Maksim Nikolov</h1>
+    <p class="mt-4 text-xl text-gray-300">Builder • Coder • Creator</p>
+    <button onclick="scrollToSection('projects')" class="mt-8 px-6 py-3 bg-cyan-500 rounded-xl glow">View Projects</button>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="py-20 px-10">
+    <h2 class="text-4xl mb-10 text-center gradient-text">Projects</h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="fade-in p-6 bg-gray-900 rounded-2xl glow">
+        <h3 class="text-2xl font-bold">Car Detection AI</h3>
+        <p class="mt-2 text-gray-400">Real-time car detection using Raspberry Pi + YOLO.</p>
+      </div>
+      <div class="fade-in p-6 bg-gray-900 rounded-2xl glow">
+        <h3 class="text-2xl font-bold">Chess Game</h3>
+        <p class="mt-2 text-gray-400">Python chess with GUI and logic system.</p>
+      </div>
+      <div class="fade-in p-6 bg-gray-900 rounded-2xl glow">
+        <h3 class="text-2xl font-bold">Data Dashboard</h3>
+        <p class="mt-2 text-gray-400">Interactive charts with live API data.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="py-20 px-10 bg-gray-950">
+    <h2 class="text-4xl mb-6 gradient-text">About Me</h2>
+    <p class="text-gray-300 max-w-2xl">I'm a developer who builds cool stuff with Python, AI, and web tech. I like making projects that actually do something useful and look clean.</p>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center py-10 text-gray-500">
+    © 2026 Maksim
+  </footer>
+
+  <script>
+    function scrollToSection(id) {
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    }
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Cursor glow effect
+    document.addEventListener('mousemove', e => {
+      const glow = document.createElement('div');
+      glow.style.position = 'fixed';
+      glow.style.left = e.clientX + 'px';
+      glow.style.top = e.clientY + 'px';
+      glow.style.width = '10px';
+      glow.style.height = '10px';
+      glow.style.background = 'cyan';
+      glow.style.borderRadius = '50%';
+      glow.style.pointerEvents = 'none';
+      glow.style.opacity = '0.6';
+      glow.style.transition = 'all 0.5s linear';
+      document.body.appendChild(glow);
+
+      setTimeout(() => glow.remove(), 500);
+    });
+  </script>
+
+</body>
+</html>
