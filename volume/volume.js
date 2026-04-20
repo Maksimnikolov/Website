@@ -1,13 +1,16 @@
 const btn = document.getElementById("btn");
 const bar = document.getElementById("bar");
 
+bar.style.height="10px";
+bar.style.background="#111";
+bar.style.width="100px";
+bar.style.marginTop="20px";
+
 btn.onclick = ()=>{
-  bar.style.width = Math.random()*300 + "px";
+  const value = Math.random()*300;
+  bar.style.width = value+"px";
 
-  const audio = new Audio("https://www.soundjay.com/button/beep-07.wav");
-  audio.play();
-
-  if(Math.random() > 0.7){
-    alert("NOPE 😈");
+  if(Math.random()>0.6){
+    btn.innerText = "Nope";
   }
 };
