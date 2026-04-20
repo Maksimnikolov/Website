@@ -4,208 +4,168 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Maksim | Portfolio</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    body { 
-      overflow-x: hidden; 
-      position: relative;
-      z-index: 1;
-      background: #000000;
-      color: #ffffff;
-    }
-    section {
-      position: relative;
-      z-index: 1;
-    }
-    .fade-in { opacity: 0; transform: translateY(20px); transition: all 0.8s ease; }
-    .fade-in.visible { opacity: 1; transform: translateY(0); }
-    .glow {
-      transition: all 0.3s ease;
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
-    }
-    .glow:hover { 
-      box-shadow: 0 0 30px rgba(255, 255, 255, 0.8), 0 0 50px rgba(100, 200, 255, 0.6);
-      transform: scale(1.05);
-    }
-    .gradient-text {
-      color: #ffffff;
-      text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(100, 200, 255, 0.6);
-      animation: neonGlow 2s ease-in-out infinite;
-    }
-    @keyframes neonGlow {
-      0%, 100% { text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(100, 200, 255, 0.4); }
-      50% { text-shadow: 0 0 20px rgba(255, 255, 255, 1), 0 0 40px rgba(100, 200, 255, 0.8); }
-    }
-    button {
-      background: #000000;
-      color: #ffffff;
-      border: 2px solid #ffffff;
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
-      animation: buttonNeon 2s ease-in-out infinite;
-    }
-    button:hover {
-      background: rgba(255, 255, 255, 0.1);
-    }
-    @keyframes buttonNeon {
-      0%, 100% { box-shadow: 0 0 10px rgba(255, 255, 255, 0.6), inset 0 0 10px rgba(255, 255, 255, 0.1); }
-      50% { box-shadow: 0 0 25px rgba(255, 255, 255, 0.9), inset 0 0 20px rgba(100, 200, 255, 0.3); }
-    }
-    .card-bg {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      transition: all 0.3s ease;
-    }
-    .card-bg:hover {
-      background: rgba(255, 255, 255, 0.05);
-      border-color: rgba(255, 255, 255, 0.6);
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body class="font-sans">
+<body>
 
-  <!-- Hero -->
-  <section class="h-screen flex flex-col justify-center items-center text-center">
-    <h1 class="text-6xl font-bold gradient-text">Maksim Nikolov</h1>
-    <p class="mt-4 text-xl text-gray-300">Builder • Coder • Creator</p>
-    <button onclick="scrollToSection('projects')" class="mt-8 px-6 py-3 rounded-xl glow text-black font-bold hover:text-white">View Projects</button>
+  <!-- NAV -->
+  <nav>
+    <h1>Maksim</h1>
+    <div class="links">
+      <a href="#projects">Projects</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h2 id="typing"></h2>
+    <p>Builder • Python • AI • Web</p>
+    <button onclick="scrollToSection('projects')">Explore</button>
   </section>
 
-  <!-- Projects -->
-  <section id="projects" class="py-20 px-10">
-    <h2 class="text-4xl mb-10 text-center gradient-text">Projects</h2>
-    <div class="grid md:grid-cols-3 gap-8">
-      <div class="fade-in p-6 card-bg rounded-2xl glow">
-        <h3 class="text-2xl font-bold">Car Detection AI</h3>
-        <p class="mt-2 text-gray-400">Real-time car detection using Raspberry Pi + YOLO.</p>
+  <!-- PROJECTS -->
+  <section id="projects">
+    <h2>Projects</h2>
+
+    <div class="grid">
+
+      <!-- PROJECT 1 -->
+      <div class="card">
+        <h3>Mini Paint App</h3>
+        <canvas id="paintCanvas"></canvas>
+        <button onclick="clearCanvas()">Clear</button>
       </div>
-      <div class="fade-in p-6 card-bg rounded-2xl glow">
-        <h3 class="text-2xl font-bold">Chess Game</h3>
-        <p class="mt-2 text-gray-400">Python chess with GUI and logic system.</p>
+
+      <!-- PROJECT 2 -->
+      <div class="card">
+        <h3>Counter Game</h3>
+        <p id="counter">0</p>
+        <button onclick="increment()">Click Me</button>
       </div>
-      <div class="fade-in p-6 card-bg rounded-2xl glow">
-        <h3 class="text-2xl font-bold">Data Dashboard</h3>
-        <p class="mt-2 text-gray-400">Interactive charts with live API data.</p>
+
+      <!-- PROJECT 3 -->
+      <div class="card">
+        <h3>Live Clock</h3>
+        <p id="clock"></p>
       </div>
+
     </div>
   </section>
 
-  <!-- About -->
-  <section class="py-20 px-10">
-    <h2 class="text-4xl mb-6 gradient-text">About Me</h2>
-    <p class="text-gray-200 max-w-2xl">I'm a developer who builds cool stuff with Python, AI, and web tech. I like making projects that actually do something useful and look clean.</p>
+  <!-- ABOUT -->
+  <section id="about">
+    <h2>About</h2>
+    <p>
+      I build real projects using Python, AI, and web tech.  
+      I like making things that are interactive, fast, and actually useful.
+    </p>
   </section>
 
-  <!-- Footer -->
-  <footer class="text-center py-10 text-gray-400" style="border-top: 1px solid rgba(255, 255, 255, 0.2);">
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2>Connect</h2>
+    <div class="socials">
+      <a href="https://github.com/YOUR_USERNAME" target="_blank">GitHub</a>
+      <a href="https://www.tiktok.com/@YOUR_USERNAME" target="_blank">TikTok</a>
+      <a href="https://instagram.com/YOUR_USERNAME" target="_blank">Instagram</a>
+    </div>
+  </section>
+
+  <footer>
     © 2026 Maksim
   </footer>
 
-  <!-- Canvas -->
-  <canvas id="shapeCanvas" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0;"></canvas>
+  <canvas id="bg"></canvas>
 
   <script>
+    // Smooth scroll
     function scrollToSection(id) {
       document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
     }
 
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    });
-
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-    const canvas = document.getElementById('shapeCanvas');
-    const ctx = canvas.getContext('2d');
-    let time = 0;
-    let scrollY = 0;
-
-    window.addEventListener('scroll', () => {
-      scrollY = window.scrollY;
-    });
-
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-
-    // Bigger, cleaner pyramids only
-    const shapes = [
-      { x: 150, y: 150, size: 140, speed: 0.5, scale: 1.3 },
-      { x: 250, y: 450, size: 120, speed: 0.45, scale: 1.2 },
-      { x: 1100, y: 200, size: 160, speed: 0.6, scale: 1.4 },
-      { x: 1200, y: 500, size: 140, speed: 0.55, scale: 1.3 },
-      { x: 640, y: 200, size: 180, speed: 0.5, scale: 1.5 }
-    ];
-
-    function drawDynamicShape(centerX, centerY, size, time, opacity, scale) {
-      ctx.strokeStyle = `rgba(255, 255, 255, ${opacity})`;
-      ctx.lineWidth = 1.5;
-      ctx.shadowColor = `rgba(255, 255, 255, ${opacity * 0.6})`;
-      ctx.shadowBlur = 8;
-
-      const s = size * scale;
-
-      const apexX = centerX + Math.cos(time) * s * 0.15;
-      const apexY = centerY - s * 0.6 + Math.sin(time) * s * 0.2;
-
-      const base = [];
-      for (let i = 0; i < 3; i++) {
-        const angle = (i / 3) * Math.PI * 2 + Math.sin(time + i) * 0.2;
-        base.push({
-          x: centerX + Math.cos(angle) * s * 0.5,
-          y: centerY + s * 0.4 + Math.sin(angle) * s * 0.3
-        });
+    // Typing effect
+    const text = "Maksim Nikolov";
+    let i = 0;
+    function type() {
+      if (i < text.length) {
+        document.getElementById("typing").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(type, 80);
       }
-
-      ctx.beginPath();
-      ctx.moveTo(base[0].x, base[0].y);
-      ctx.lineTo(base[1].x, base[1].y);
-      ctx.lineTo(base[2].x, base[2].y);
-      ctx.closePath();
-      ctx.stroke();
-
-      base.forEach(p => {
-        ctx.beginPath();
-        ctx.moveTo(apexX, apexY);
-        ctx.lineTo(p.x, p.y);
-        ctx.stroke();
-      });
     }
+    type();
+
+    // Counter
+    let count = 0;
+    function increment() {
+      count++;
+      document.getElementById("counter").innerText = count;
+    }
+
+    // Clock
+    function updateClock() {
+      const now = new Date();
+      document.getElementById("clock").innerText = now.toLocaleTimeString();
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    // Paint app
+    const canvas = document.getElementById("paintCanvas");
+    const ctx = canvas.getContext("2d");
+    canvas.width = 250;
+    canvas.height = 150;
+
+    let drawing = false;
+
+    canvas.addEventListener("mousedown", () => drawing = true);
+    canvas.addEventListener("mouseup", () => drawing = false);
+    canvas.addEventListener("mousemove", draw);
+
+    function draw(e) {
+      if (!drawing) return;
+      ctx.fillRect(e.offsetX, e.offsetY, 4, 4);
+    }
+
+    function clearCanvas() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+
+    // Subtle particle background
+    const bg = document.getElementById("bg");
+    const bctx = bg.getContext("2d");
+
+    function resize() {
+      bg.width = window.innerWidth;
+      bg.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener("resize", resize);
+
+    let particles = Array.from({ length: 60 }, () => ({
+      x: Math.random() * bg.width,
+      y: Math.random() * bg.height,
+      vx: (Math.random() - 0.5) * 0.5,
+      vy: (Math.random() - 0.5) * 0.5
+    }));
 
     function animate() {
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.15)';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      bctx.clearRect(0, 0, bg.width, bg.height);
 
-      time += 0.02;
+      particles.forEach(p => {
+        p.x += p.vx;
+        p.y += p.vy;
 
-      const scrollFade = Math.max(0, 1 - scrollY / window.innerHeight);
+        if (p.x < 0 || p.x > bg.width) p.vx *= -1;
+        if (p.y < 0 || p.y > bg.height) p.vy *= -1;
 
-      shapes.forEach((shape, i) => {
-        const floatX = Math.cos(time * 0.5 + i) * 40;
-        const floatY = Math.sin(time * 0.6 + i) * 40;
-
-        const opacity = (0.7 + Math.sin(time + i) * 0.2) * scrollFade;
-
-        drawDynamicShape(
-          shape.x + floatX,
-          shape.y + floatY,
-          shape.size,
-          time * shape.speed,
-          opacity,
-          shape.scale
-        );
+        bctx.fillRect(p.x, p.y, 2, 2);
       });
 
       requestAnimationFrame(animate);
     }
-
     animate();
   </script>
 
